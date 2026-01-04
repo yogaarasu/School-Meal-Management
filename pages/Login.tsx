@@ -214,7 +214,7 @@ const Login: React.FC<Props> = ({ onLogin }) => {
             © 2025 Government of Tamil Nadu. All Rights Reserved.
           </p>
           <p className="text-[9px] font-bold text-slate-300 dark:text-zinc-700 uppercase tracking-widest leading-relaxed">
-            Make by Yogaarasu
+            Made by Yogaarasu
           </p>
         </footer>
       </main>
