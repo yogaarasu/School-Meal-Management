@@ -1,0 +1,7 @@
+{
+  "name": "TN Noon Meal Management System",
+  "description": "Comprehensive school meal tracking with AI-powered location and school fetching for all 38 districts of Tamil Nadu.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
