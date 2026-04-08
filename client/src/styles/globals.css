@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800;900&family=Noto+Sans+Tamil:wght@400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 48 36% 97%;
+  --foreground: 146 20% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 146 20% 14%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 146 20% 14%;
+  --primary: 153 56% 28%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 42 76% 92%;
+  --secondary-foreground: 148 35% 18%;
+  --muted: 42 20% 90%;
+  --muted-foreground: 148 8% 38%;
+  --accent: 160 35% 88%;
+  --accent-foreground: 146 30% 18%;
+  --destructive: 0 77% 56%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 38 25% 84%;
+  --input: 38 25% 84%;
+  --ring: 153 56% 28%;
+  --radius: 1rem;
+}
+
+.dark {
+  --background: 156 20% 8%;
+  --foreground: 48 45% 95%;
+  --card: 156 18% 10%;
+  --card-foreground: 48 45% 95%;
+  --popover: 156 18% 10%;
+  --popover-foreground: 48 45% 95%;
+  --primary: 151 51% 58%;
+  --primary-foreground: 156 38% 12%;
+  --secondary: 28 15% 18%;
+  --secondary-foreground: 45 48% 96%;
+  --muted: 24 10% 17%;
+  --muted-foreground: 38 20% 70%;
+  --accent: 162 24% 20%;
+  --accent-foreground: 48 45% 95%;
+  --destructive: 0 63% 48%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 30 10% 24%;
+  --input: 30 10% 24%;
+  --ring: 151 51% 58%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Public Sans", "Noto Sans Tamil", sans-serif;
+    background-image:
+      radial-gradient(circle at 12% 8%, hsl(var(--primary) / 0.16), transparent 36%),
+      radial-gradient(circle at 88% 12%, hsl(38 92% 58% / 0.18), transparent 34%),
+      radial-gradient(circle at 50% 95%, hsl(184 80% 55% / 0.08), transparent 28%);
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at 8% 8%, hsl(var(--primary) / 0.22), transparent 36%),
+      radial-gradient(circle at 92% 6%, hsl(38 96% 62% / 0.2), transparent 34%),
+      radial-gradient(circle at 52% 92%, hsl(190 86% 62% / 0.12), transparent 30%);
+  }
+
+  [data-language="ta"] body {
+    letter-spacing: 0;
+    word-spacing: 0.01em;
+  }
+}
