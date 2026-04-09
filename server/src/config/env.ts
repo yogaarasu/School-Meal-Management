@@ -12,11 +12,13 @@ const parseBoolean = (value: string | undefined, fallback: boolean): boolean => 
   return value.toLowerCase() === "true";
 };
 
+const normalizeOrigin = (value: string): string => value.trim().replace(/\/$/, "").toLowerCase();
+
 const parseOrigins = (value: string | undefined): string[] => {
   const raw = value || "http://localhost:5173";
   return raw
     .split(",")
-    .map((origin) => origin.trim())
+    .map((origin) => normalizeOrigin(origin))
     .filter((origin) => origin.length > 0);
 };
 

@@ -10,10 +10,36 @@ import { organizerRouter } from "./routes/organizer/index.js";
 
 export const app = express();
 
+const normalizeOrigin = (value: string): string => value.trim().replace(/\/$/, "").toLowerCase();
+
+const matchesAllowedOrigin = (requestOrigin: string): boolean => {
+  return env.clientOrigins.some((allowed) => {
+    const normalizedAllowed = normalizeOrigin(allowed);
+
+    if (normalizedAllowed === requestOrigin) {
+      return true;
+    }
+
+    if (!normalizedAllowed.includes("*")) {
+      return false;
+    }
+
+    const pattern = normalizedAllowed.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*");
+    return new RegExp(`^${pattern}$`).test(requestOrigin);
+  });
+};
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || env.clientOrigins.includes(origin)) {
+      if (!origin) {
+        callback(null, true);
+        return;
+      }
+
+      const requestOrigin = normalizeOrigin(origin);
+
+      if (matchesAllowedOrigin(requestOrigin)) {
         callback(null, true);
         return;
       }
