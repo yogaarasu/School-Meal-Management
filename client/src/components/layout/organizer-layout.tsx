@@ -183,8 +183,8 @@ export const OrganizerLayout = ({ user, onLogout }: OrganizerLayoutProps) => {
                   className="flex items-center gap-2 rounded-md px-1 py-1 transition-colors hover:bg-accent/60"
                   aria-label="Open app install options"
                 >
-                  <span className="h-8 w-8 overflow-hidden rounded-full border bg-white/90">
-                    <img src="/tn-nmo-logo.png" alt="TN NMO app" className="h-full w-full object-cover" />
+                  <span className="h-8 w-8 overflow-hidden rounded-full ring-1 ring-border/60">
+                    <img src="/tn-nmo-logo.png" alt="TN NMO app" className="h-full w-full scale-110 object-cover" />
                   </span>
                   <p className="text-sm font-bold tracking-wide text-primary">TN NMO</p>
                 </button>
@@ -234,11 +234,11 @@ export const OrganizerLayout = ({ user, onLogout }: OrganizerLayoutProps) => {
                   : "This app is already installed on your device."
                 : canInstall
                   ? language === "ta"
-                    ? "இந்த ஆப்பை முகப்பு திரையில் சேர்க்கலாம்."
-                    : "You can add this app to your home screen."
+                    ? "இந்த ஆப்பை நிறுவலாம்."
+                    : "You can install this app on your device."
                   : language === "ta"
-                    ? "இந்த உலாவியில் நேரடி நிறுவல் இல்லை. உலாவி பட்டியலில் Add to Home Screen தேர்வு செய்யவும்."
-                    : "Direct install is not available in this browser. Use your browser menu and choose Add to Home Screen."}
+                    ? "இந்த உலாவியில் நேரடி நிறுவல் இல்லை. உலாவி பட்டியலில் Install தேர்வு செய்யவும்."
+                    : "Direct install is not available in this browser. Use your browser menu and choose Install."}
             </DialogDescription>
           </DialogHeader>
           <DialogFooter className="flex-col-reverse gap-2 sm:flex-row sm:justify-end">
@@ -252,8 +252,8 @@ export const OrganizerLayout = ({ user, onLogout }: OrganizerLayoutProps) => {
                     ? "தயவு செய்து காத்திருக்கவும்..."
                     : "Please wait..."
                   : language === "ta"
-                    ? "முகப்பில் சேர்"
-                    : "Add to Home Screen"}
+                    ? "நிறுவு"
+                    : "Install"}
               </Button>
             ) : null}
           </DialogFooter>
@@ -262,4 +262,6 @@ export const OrganizerLayout = ({ user, onLogout }: OrganizerLayoutProps) => {
     </>
   );
 };
+
+
 
