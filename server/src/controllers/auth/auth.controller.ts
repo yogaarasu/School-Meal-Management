@@ -12,17 +12,19 @@ const loginSchema = z.object({
   password: z.string().regex(STRICT_PASSWORD_REGEX, STRICT_PASSWORD_HINT)
 });
 
+const sameSitePolicy: "lax" | "none" = env.nodeEnv === "production" ? "none" : "lax";
+
 const cookieConfig = {
   httpOnly: true,
   secure: env.nodeEnv === "production",
-  sameSite: "lax" as const,
+  sameSite: sameSitePolicy,
   maxAge: 7 * 24 * 60 * 60 * 1000
 };
 
 const clearCookieConfig = {
   httpOnly: true,
   secure: env.nodeEnv === "production",
-  sameSite: "lax" as const
+  sameSite: sameSitePolicy
 };
 
 export const loginController = asyncHandler(async (req: Request, res: Response) => {
@@ -56,3 +58,4 @@ export const logoutController = asyncHandler(async (_req: Request, res: Response
   res.clearCookie(SESSION_COOKIE_NAME, clearCookieConfig);
   res.status(200).json({ message: "Logged out" });
 });
+
